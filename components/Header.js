@@ -20,9 +20,11 @@ export default function Header() {
       <Link href="/about">
         <a>About</a>
       </Link>
-      <Link href="/users">
-        <a>Users</a>
+      <Link href="/products">
+        <a>Products</a>
       </Link>
+
+      <h3>{props.guestList}</h3>
     </header>
   );
 }
