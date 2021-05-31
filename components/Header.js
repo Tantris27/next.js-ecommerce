@@ -9,9 +9,12 @@ const headerStyles = css`
   a + a {
     margin-left: 15px;
   }
+  > button {
+    margin: 0 0 0 auto;
+  }
 `;
 
-export default function Header() {
+export default function Header(cartItems) {
   return (
     <header css={headerStyles}>
       <Link href="/">
@@ -23,8 +26,9 @@ export default function Header() {
       <Link href="/products">
         <a>Products</a>
       </Link>
-
-      <h3>{props.guestList}</h3>
+      <Link href="/checkout">
+        <button>{cartItems === [] ? 'Empty' : cartItems.length}</button>
+      </Link>
     </header>
   );
 }

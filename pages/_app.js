@@ -1,18 +1,9 @@
 import { css, Global } from '@emotion/react';
 import Head from 'next/head';
-import { useEffect, useState } from 'react';
-
-const baseUrl = 'https://guestlistapi.herokuapp.com/';
+import { useState } from 'react';
 
 function MyApp({ Component, pageProps }) {
-  const [guestList, setGuestList] = useState([]);
-  useEffect(() => {
-    fetch(baseUrl).then((x) =>
-      x.json().then((data) => {
-        setGuestList(data);
-      }),
-    );
-  }, []);
+  const [cartItems, setCartItems] = useState([]);
   return (
     <>
       <Global
@@ -32,10 +23,14 @@ function MyApp({ Component, pageProps }) {
       <Head>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Component {...pageProps} />
+      <Component
+        {...pageProps}
+        cartItems={cartItems}
+        setCartItems={setCartItems}
+      />
     </>
   );
 }
 
 export default MyApp;
-export function getServerSideProps() {}
+// export function getServerSideProps() {}
