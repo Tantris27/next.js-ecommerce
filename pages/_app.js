@@ -3,16 +3,16 @@ import Head from 'next/head';
 import { useEffect, useState } from 'react';
 
 const baseUrl = 'https://guestlistapi.herokuapp.com/';
-const [guestList, setGuestList] = useState([]);
-useEffect(() => {
-  fetch(baseUrl).then((x) =>
-    x.json().then((data) => {
-      setGuestList(data);
-    }),
-  );
-}, []);
 
 function MyApp({ Component, pageProps }) {
+  const [guestList, setGuestList] = useState([]);
+  useEffect(() => {
+    fetch(baseUrl).then((x) =>
+      x.json().then((data) => {
+        setGuestList(data);
+      }),
+    );
+  }, []);
   return (
     <>
       <Global
