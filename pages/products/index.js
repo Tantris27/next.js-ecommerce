@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import Layout from '../../components/Layout';
 
-export default function ProductIndex({ ...props }) {
+export default function ProductIndex({ cartItems, setCartItems, ...props }) {
   console.log(props);
   return (
     <Layout>
@@ -16,7 +16,13 @@ export default function ProductIndex({ ...props }) {
             <div>Genre: {product.genre}</div>
             <div>product price: {product.price}</div>
             {console.log(product)}
-            <button onClick={() => {}}>Add to Buy</button>
+            <button
+              onClick={() => {
+                setCartItems([...cartItems, product]);
+              }}
+            >
+              Add to Buy
+            </button>
           </div>
         );
       })}
