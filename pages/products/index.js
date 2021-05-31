@@ -1,8 +1,8 @@
 import Head from 'next/head';
-import { useState } from 'react';
 import Layout from '../../components/Layout';
 
-export default function ProductIndex(props, { cartItems, setCartItems }) {
+export default function ProductIndex({ ...props }) {
+  console.log(props);
   return (
     <Layout>
       <Head>
@@ -15,14 +15,8 @@ export default function ProductIndex(props, { cartItems, setCartItems }) {
             <div>product id: {product.id}</div>
             <div>Genre: {product.genre}</div>
             <div>product price: {product.price}</div>
-            <button
-              onClick={() => {
-                props.setCartItems(cartItems.push(product));
-                console.log(props.cartItems);
-              }}
-            >
-              Add to Buy
-            </button>
+            {console.log(product)}
+            <button onClick={() => {}}>Add to Buy</button>
           </div>
         );
       })}
@@ -31,7 +25,6 @@ export default function ProductIndex(props, { cartItems, setCartItems }) {
 }
 export async function getServerSideProps() {
   const { products } = await import('../../util/database');
-  console.log('products', products);
   return {
     props: {
       products: products,

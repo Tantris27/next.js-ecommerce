@@ -23,14 +23,10 @@ function MyApp({ Component, pageProps }) {
       <Head>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Component
-        {...pageProps}
-        cartItems={cartItems}
-        setCartItems={setCartItems}
-      />
+
+      <Component {...pageProps} />
     </>
   );
 }
 
 export default MyApp;
-// export function getServerSideProps() {}
