@@ -17,8 +17,12 @@ export default function ProductIndex({ cartItems, setCartItems, ...props }) {
             <div>product price: {product.price}</div>
             {console.log(product)}
             <button
-              onClick={() => {
-                setCartItems([...cartItems, product]);
+              onClick={(e) => {
+                e.preventDefault();
+                let sellprod = { ...product };
+                sellprod.sellId = cartItems.length;
+                setCartItems([...cartItems, sellprod]);
+                sellprod = {};
               }}
             >
               Add to Buy

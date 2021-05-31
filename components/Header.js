@@ -14,7 +14,7 @@ const headerStyles = css`
   }
 `;
 
-export default function Header() {
+export default function Header({ cartItems }) {
   return (
     <header css={headerStyles}>
       <Link href="/">
@@ -27,7 +27,7 @@ export default function Header() {
         <a>Products</a>
       </Link>
       <Link href="/checkout">
-        <button>checkout</button>
+        <button>{!cartItems ? 'Empty' : cartItems.length}</button>
       </Link>
     </header>
   );
