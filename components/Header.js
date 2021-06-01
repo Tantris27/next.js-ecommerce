@@ -1,4 +1,5 @@
 import { css } from '@emotion/react';
+import cookies from 'js-cookie';
 import Link from 'next/link';
 
 const headerStyles = css`
@@ -14,10 +15,19 @@ const headerStyles = css`
   }
 `;
 
-export default function Header({ props }) {
-  // console.log(props.cartItems);
-  // const cartItemsTotal = props.cartItems ? props.cartItems.length : 'Empty';
-  // console.log(props.cartItems);
+export default function Header() {
+  const shoppingListData = cookies.getJSON('cartItems');
+  const shoppingList = !shoppingListData?.length ? 0 : shoppingListData.length;
+  // const getShoppingList = () => {
+  //   const shoppingListData = cookies.getJSON('cartItems');
+  //   return shoppingListData || 0;
+  // };
+  // const shoppingList = getShoppingList();
+
+  // const shoppingListData = cookies.getJSON('cartItems');
+  // const shoppingList = Array.isArray(shoppingListData)
+  //   ? 0
+  //   : shoppingListData.length;
   return (
     <header css={headerStyles}>
       <Link href="/">
@@ -30,8 +40,12 @@ export default function Header({ props }) {
         <a>Products</a>
       </Link>
       <Link href="/checkout">
-        <button></button>
+        <button>
+          Cart:
+          {shoppingList}
+        </button>
       </Link>
+      <button onClick={() => cookies.set('cartItems', [])}>Reset</button>
     </header>
   );
 }

@@ -1,9 +1,11 @@
 import { css, Global } from '@emotion/react';
+import cookies from 'js-cookie';
 import Head from 'next/head';
 import { useState } from 'react';
 
 function MyApp({ Component, pageProps }) {
   const [cartItems, setCartItems] = useState([]);
+  cookies.set('cartItems', cartItems);
   return (
     <>
       <Global
