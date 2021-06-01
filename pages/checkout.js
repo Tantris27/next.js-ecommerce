@@ -1,11 +1,11 @@
 import Head from 'next/head';
 import Layout from '../components/Layout';
 
-export default function Checkout({ cartItems }) {
+export default function Checkout({ ...props }) {
   const calcTotal = () => {
     let total = 0;
-    for (let i = 0; i < cartItems.length; i++) {
-      total += parseFloat(cartItems[i].price);
+    for (let i = 0; i < props.cartItems.length; i++) {
+      total += parseFloat(props.cartItems[i].price);
     }
     return `Total = ${total}$`;
   };
@@ -14,11 +14,12 @@ export default function Checkout({ cartItems }) {
       <Head>
         <title>Checkout</title>
       </Head>
+      {console.log(props.cartItems)}
       <div>
         <h1>Checkout</h1>
       </div>
       <div>
-        {cartItems.map((sell) => {
+        {props.cartItems.map((sell) => {
           return <h3 key={sell.sellid}>{sell.name}</h3>;
         })}
         {calcTotal()}

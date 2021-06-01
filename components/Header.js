@@ -14,7 +14,10 @@ const headerStyles = css`
   }
 `;
 
-export default function Header({ cartItems }) {
+export default function Header({ props }) {
+  // console.log(props.cartItems);
+  // const cartItemsTotal = props.cartItems ? props.cartItems.length : 'Empty';
+  // console.log(props.cartItems);
   return (
     <header css={headerStyles}>
       <Link href="/">
@@ -27,7 +30,7 @@ export default function Header({ cartItems }) {
         <a>Products</a>
       </Link>
       <Link href="/checkout">
-        <button>{!cartItems ? 'Empty' : cartItems.length}</button>
+        <button></button>
       </Link>
     </header>
   );

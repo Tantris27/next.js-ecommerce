@@ -1,9 +1,9 @@
 import Head from 'next/head';
 import Layout from '../components/Layout';
 
-export default function About() {
+export default function About({ ...props }) {
   return (
-    <Layout>
+    <Layout {...props}>
       <Head>
         <title>About</title>
       </Head>

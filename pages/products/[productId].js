@@ -5,22 +5,25 @@ export default function SingleProduct({ ...props }) {
   return (
     <Layout>
       <Head>
-        <title>{props.products.name}</title>
+        <title>{props.product.name}</title>
       </Head>
 
-      <h1>{props.products.name}</h1>
-      <div>product id: {props.products.id}</div>
-      <div>Genre: {props.products.genre}</div>
-      <div>product price: {props.products.price}</div>
+      <h1>{props.product.name}</h1>
+      <div>product id: {props.product.id}</div>
+      <div>Genre: {props.product.genre}</div>
+      <div>product price: {props.product.price}</div>
     </Layout>
   );
 }
-export async function getServerSideProps() {
+export async function getServerSideProps(context) {
+  const bookId = context.query.productId;
   const { products } = await import('../../util/database');
-  console.log('products', products);
+  const product = products.find((book) => book.productId === parseInt(bookId));
+
+  console.log('product', product);
   return {
     props: {
-      products: products,
+      product: product,
     },
   };
 }
