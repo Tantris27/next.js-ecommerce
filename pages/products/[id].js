@@ -6,17 +6,17 @@ export default function SingleProduct({ setCartItems, cartItems, ...props }) {
   return (
     <Layout>
       <Head>
-        <title>{props.product.name}</title>
+        <title>{props.book.name}</title>
       </Head>
 
-      <h1>{props.product.name}</h1>
-      <div>product id: {props.product.id}</div>
-      <div>Genre: {props.product.genre}</div>
-      <div>product price: {props.product.price}</div>
+      <h1>{props.book.name}</h1>
+      <div>product id: {props.book.id}</div>
+      <div>Genre: {props.book.genre}</div>
+      <div>product price: {props.book.price}$</div>
       <button
         onClick={async (e) => {
           e.preventDefault();
-          let sellprod = { ...props.product };
+          let sellprod = { ...props.book };
           sellprod.sellId = cartItems.length;
           setCartItems([...cartItems, sellprod]);
           sellprod = {};
@@ -28,12 +28,12 @@ export default function SingleProduct({ setCartItems, cartItems, ...props }) {
       >
         Add to Buy
       </button>
-      <button
+      {/* <button
         onClick={async (e) => {
           e.preventDefault();
-          let returnprod = { ...props.product };
+          let returnprod = { ...props.book };
           // returnprod.sellId = cartItems.length;
-          setCartItems(delete cartItems.productId === returnprod.productId);
+          setCartItems(delete cartItems.id === returnprod.productId);
           console.log(cartItems);
           returnprod = {};
           await cookies.set(
@@ -43,19 +43,21 @@ export default function SingleProduct({ setCartItems, cartItems, ...props }) {
         }}
       >
         Delete Product
-      </button>
+      </button> */}
     </Layout>
   );
 }
 export async function getServerSideProps(context) {
-  const bookId = context.query.productId;
-  const { products } = await import('../../util/database');
-  const product = products.find((book) => book.productId === parseInt(bookId));
+  const bookId = await context.query.id;
+  const { getBookById } = await import('../../util/database');
+  const book = await getBookById(bookId);
+  //  products.find((book) => book.productId === parseInt(bookId));
 
-  console.log('product', product);
+  console.log(bookId);
+  console.log(book);
   return {
     props: {
-      product: product,
+      book: book,
     },
   };
 }

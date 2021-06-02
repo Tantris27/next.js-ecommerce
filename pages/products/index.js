@@ -32,22 +32,19 @@ export default function ProductIndex({ cartItems, setCartItems, ...props }) {
         <title>ProductsIndex</title>
       </Head>
       <div css={productGridStyle}>
-        {props.products.map((product) => {
+        {props.books.map((book) => {
           return (
-            <Link
-              href={'/products/' + product.productId}
-              key={product.productId}
-            >
+            <Link href={'/products/' + book.id} key={book.id}>
               <a css={linkStyle}>
                 <div css={productLinkStyle}>
-                  <h1>{product.name}</h1>
-                  <div>product id: {product.productId}</div>
-                  <div>Genre: {product.genre}</div>
-                  <div>product price: {product.price}</div>
+                  <h1>{book.name}</h1>
+                  <div>product id: {book.id}</div>
+                  <div>Genre: {book.genre}</div>
+                  <div>product price: {book.price}$</div>
                   <button
                     onClick={async (e) => {
                       e.preventDefault();
-                      let sellprod = { ...product };
+                      let sellprod = { ...book };
                       sellprod.sellId = cartItems.length;
                       setCartItems([...cartItems, sellprod]);
                       sellprod = {};
@@ -69,10 +66,12 @@ export default function ProductIndex({ cartItems, setCartItems, ...props }) {
   );
 }
 export async function getServerSideProps() {
-  const { products } = await import('../../util/database');
+  const { getBooks } = await import('../../util/database');
+  const books = await getBooks();
+  console.log(books);
   return {
     props: {
-      products: products,
+      books: books,
     },
   };
 }

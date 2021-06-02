@@ -1,13 +1,27 @@
-import { camecaseKeys } from 'camelcase-keys';
-import { dotenvSafe } from 'dotenv-safe';
-import { sql } from 'postgres';
+// import camecaseKeys from 'camelcase-keys';
+import dotenvSafe from 'dotenv-safe';
+import postgres from 'postgres';
 
-// dotenvSafe.config();
+// Access enviromental variables for calling the DB
+dotenvSafe.config();
+// connect to DB
+const sql = postgres();
 
-export const products = [
-  { productId: 1, name: 'book1', genre: 'philosophy', price: '30$' },
-  { productId: 2, name: 'book2', genre: 'poetry', price: '14$' },
-  { productId: 3, name: 'book3', genre: 'history', price: '33$' },
-  { productId: 4, name: 'book4', genre: 'cooking', price: '18$' },
-  { productId: 5, name: 'book5', genre: 'novel', price: '25$' },
-];
+// Get all books from DB for products Page
+export async function getBooks() {
+  const books = await sql`SELECT * FROM books`;
+  return books.map((book) => book);
+}
+
+// Get one book specified by Id from DB for productId Page
+export async function getBookById(id) {
+  const books = await sql`
+    SELECT
+      *
+    FROM
+      books
+    WHERE
+      id = ${id}
+  `;
+  return books[0];
+}
