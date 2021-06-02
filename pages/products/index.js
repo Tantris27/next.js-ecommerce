@@ -51,13 +51,10 @@ export default function ProductIndex({ cartItems, setCartItems, ...props }) {
                       sellprod.sellId = cartItems.length;
                       setCartItems([...cartItems, sellprod]);
                       sellprod = {};
-                      // console.log(cartItems);
-                      // console.log(JSON.stringify(cartItems));
                       await cookies.set(
                         'cartItems',
                         JSON.stringify([...cartItems, sellprod]),
                       );
-                      // console.log(cookies.get('cartItems'));
                     }}
                   >
                     Add to Buy

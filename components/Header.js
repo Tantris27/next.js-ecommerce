@@ -18,16 +18,6 @@ const headerStyles = css`
 export default function Header() {
   const shoppingListData = cookies.getJSON('cartItems');
   const shoppingList = !shoppingListData?.length ? 0 : shoppingListData.length;
-  // const getShoppingList = () => {
-  //   const shoppingListData = cookies.getJSON('cartItems');
-  //   return shoppingListData || 0;
-  // };
-  // const shoppingList = getShoppingList();
-
-  // const shoppingListData = cookies.getJSON('cartItems');
-  // const shoppingList = Array.isArray(shoppingListData)
-  //   ? 0
-  //   : shoppingListData.length;
   return (
     <header css={headerStyles}>
       <Link href="/">
@@ -45,7 +35,6 @@ export default function Header() {
           {shoppingList}
         </button>
       </Link>
-      <button onClick={() => cookies.set('cartItems', [])}>Reset</button>
     </header>
   );
 }

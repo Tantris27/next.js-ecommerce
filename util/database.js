@@ -1,3 +1,9 @@
+import { camecaseKeys } from 'camelcase-keys';
+import { dotenvSafe } from 'dotenv-safe';
+import { sql } from 'postgres';
+
+// dotenvSafe.config();
+
 export const products = [
   { productId: 1, name: 'book1', genre: 'philosophy', price: '30$' },
   { productId: 2, name: 'book2', genre: 'poetry', price: '14$' },

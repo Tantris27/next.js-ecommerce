@@ -20,7 +20,7 @@ export default function Checkout({ ...props }) {
       </div>
       <div>
         {props.cartItems.map((sell) => {
-          return <h3 key={sell.sellid}>{sell.name}</h3>;
+          return <h3 key={sell.sellId}>{sell.name}</h3>;
         })}
         {calcTotal()}
       </div>
