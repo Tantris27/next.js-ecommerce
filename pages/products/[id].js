@@ -51,7 +51,6 @@ export async function getServerSideProps(context) {
   const bookId = await context.query.id;
   const { getBookById } = await import('../../util/database');
   const book = await getBookById(bookId);
-  //  products.find((book) => book.productId === parseInt(bookId));
 
   console.log(bookId);
   console.log(book);

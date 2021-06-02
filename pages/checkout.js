@@ -1,29 +1,27 @@
-import Head from 'next/head';
-import Layout from '../components/Layout';
+import Link from 'next/link';
 
-export default function Checkout({ ...props }) {
-  const calcTotal = () => {
-    let total = 0;
-    for (let i = 0; i < props.cartItems.length; i++) {
-      total += parseFloat(props.cartItems[i].price);
-    }
-    return `Total = ${total}$`;
-  };
+export default function Checkout(...props) {
   return (
-    <Layout>
+
+    <Layout {...props}>
       <Head>
         <title>Checkout</title>
       </Head>
-      {console.log(props.cartItems)}
       <div>
-        <h1>Checkout</h1>
-      </div>
-      <div>
-        {props.cartItems.map((sell) => {
-          return <h3 key={sell.sellId}>{sell.title}</h3>;
-        })}
-        {calcTotal()}
-      </div>
+      <h1>Checkout</h1>
+      <p>Enter Details</p>
+      <form>
+        <input type="text" placeholder="First Name" />
+        <input type="text" placeholder="Last Name" />
+        <input type="email" placeholder="Email" />
+        <input type="tel" placeholder="06992121212" />
+        <br/>
+        <Link href="/thanks">
+          <button>Complete Transaction</button>
+        </Link>
+      </form>
+    </div>
     </Layout>
+
   );
 }

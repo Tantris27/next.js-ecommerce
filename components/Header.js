@@ -29,7 +29,7 @@ export default function Header() {
       <Link href="/products">
         <a>Products</a>
       </Link>
-      <Link href="/checkout">
+      <Link href="/shoppingCart">
         <button>
           Cart:
           {shoppingList}
