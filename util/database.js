@@ -15,6 +15,7 @@ export async function getBooks() {
 
 // Get one book specified by Id from DB for productId Page
 export async function getBookById(id) {
+  if (isNaN(id)) return;
   const books = await sql`
     SELECT
       *

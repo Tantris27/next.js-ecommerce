@@ -52,6 +52,8 @@ export default function ProductIndex({ cartItems, setCartItems, ...props }) {
                         'cartItems',
                         JSON.stringify([...cartItems, sellprod]),
                       );
+                      await console.log(JSON.stringify([...cartItems]));
+                      await console.log([...cartItems]);
                     }}
                   >
                     Add to Buy

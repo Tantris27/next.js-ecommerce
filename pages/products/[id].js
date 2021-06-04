@@ -3,6 +3,16 @@ import Head from 'next/head';
 import Layout from '../../components/Layout';
 
 export default function SingleProduct({ setCartItems, cartItems, ...props }) {
+  if (props.book === null) {
+    return (
+      <Layout>
+        <Head>
+          <title>Product not found</title>
+        </Head>
+        <h3>Product not found</h3>
+      </Layout>
+    );
+  }
   return (
     <Layout>
       <Head>
@@ -56,7 +66,7 @@ export async function getServerSideProps(context) {
   console.log(book);
   return {
     props: {
-      book: book,
+      book: book || null,
     },
   };
 }

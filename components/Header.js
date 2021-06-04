@@ -29,9 +29,6 @@ export default function Header() {
       <Link href="/products">
         <a>Products</a>
       </Link>
-      {/* <Link href="/shoppingCart">
-        <a>Shopping Cart</a>
-      </Link> */}
       <Link href="/shoppingCart">
         <button>
           Cart:
