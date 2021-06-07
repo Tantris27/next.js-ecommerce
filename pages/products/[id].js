@@ -58,12 +58,11 @@ export default function SingleProduct({ setCartItems, cartItems, ...props }) {
   );
 }
 export async function getServerSideProps(context) {
+  console.log(context);
   const bookId = await context.query.id;
   const { getBookById } = await import('../../util/database');
   const book = await getBookById(bookId);
 
-  console.log(bookId);
-  console.log(book);
   return {
     props: {
       book: book || null,

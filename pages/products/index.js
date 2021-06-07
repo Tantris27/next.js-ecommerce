@@ -50,10 +50,10 @@ export default function ProductIndex({ cartItems, setCartItems, ...props }) {
                       sellprod = {};
                       await cookies.set(
                         'cartItems',
-                        JSON.stringify([...cartItems, sellprod]),
+                        JSON.stringify([cartItems.id]),
                       );
-                      await console.log(JSON.stringify([...cartItems]));
-                      await console.log([...cartItems]);
+                      // await console.log(JSON.stringify([...cartItems]));
+                      // await console.log([...cartItems]);
                     }}
                   >
                     Add to Buy
@@ -70,7 +70,6 @@ export default function ProductIndex({ cartItems, setCartItems, ...props }) {
 export async function getServerSideProps() {
   const { getBooks } = await import('../../util/database');
   const books = await getBooks();
-  console.log(books);
   return {
     props: {
       books: books,

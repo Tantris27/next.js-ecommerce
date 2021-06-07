@@ -48,7 +48,7 @@ export default function ShoppingCart({ ...props }) {
               //   console.log(props.cartItems);
               // }}
               >
-                Add
+                Fix!!! Add
               </button>
               <button
                 onClick={async () => {
