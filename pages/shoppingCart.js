@@ -58,7 +58,7 @@ export default function ShoppingCart({ ...props }) {
                   });
                   console.log(clone);
                   props.setCartItems(clone);
-                  await Cookies.set('cartItems', JSON.stringify(clone));
+                  await Cookies.set('cartItems', JSON.stringify(clone.length));
                 }}
               >
                 Delete

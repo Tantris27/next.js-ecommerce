@@ -2,8 +2,6 @@ import { css } from '@emotion/react';
 import cookies from 'js-cookie';
 import Link from 'next/link';
 
-// import from '../pics/shoppingcart.png';
-
 const aStyle = css`
   margin-top: 5px;
   color: white;
@@ -43,7 +41,7 @@ const headerStyles = css`
 
 export default function Header() {
   const shoppingListData = cookies.getJSON('cartItems');
-  const shoppingList = !shoppingListData?.length ? 0 : shoppingListData.length;
+  // const shoppingList = !shoppingListData?.length ? 0 : shoppingListData.length;
   return (
     <header css={headerStyles}>
       <Link href="/">
@@ -64,7 +62,7 @@ export default function Header() {
             alt="shopping cart"
           />
 
-          {shoppingList}
+          {shoppingListData}
         </div>
       </Link>
     </header>
