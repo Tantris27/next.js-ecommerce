@@ -41,7 +41,6 @@ const headerStyles = css`
 
 export default function Header() {
   const shoppingListData = cookies.getJSON('cartItems');
-  // const shoppingList = !shoppingListData?.length ? 0 : shoppingListData.length;
   return (
     <header css={headerStyles}>
       <Link href="/">
