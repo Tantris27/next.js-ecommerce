@@ -1,12 +1,21 @@
+import { css } from '@emotion/react';
 import Cookies from 'js-cookie';
 import Head from 'next/head';
 import Link from 'next/link';
-import { useState } from 'react';
 import Layout from '../components/Layout';
+
+const itemStyle = css`
+  display: flex;
+  border: solid 1px grey;
+  justify-content: space-around;
+  align-items: center;
+  max-width: 500px;
+  max-height: 40px;
+  border-radius: 3px;
+`;
 
 export default function ShoppingCart({ ...props }) {
   const clone = [].concat(props.cartItems);
-  const [itemDemand, setItemDemand] = useState(1);
 
   const calcTotal = () => {
     let total = 0;
@@ -26,29 +35,44 @@ export default function ShoppingCart({ ...props }) {
       <div>
         {clone.map((sell) => {
           return (
-            <div key={sell.sellId}>
+            <div key={sell.sellId} css={itemStyle}>
               <h3>{sell.title}</h3>
               <p>{sell.price}$</p>
               <input
                 type="number"
-                value={itemDemand}
-                onChange={(e) => {
-                  setItemDemand(e.currentTarget.value);
-                  console.log(itemDemand);
+                min="1"
+                onChange={async (e) => {
+                  await Cookies.set(
+                    `item${sell.sellId}Amount`,
+                    JSON.stringify(e.currentTarget.value),
+                  );
                 }}
               />
               <button
-              // onClick={() => {
-              //   const addArray = [];
-              //   for (let i = 1; i < itemDemand; i++) {
-              //     addArray.push(sell);
-              //     return addArray;
-              //   }
-              //   props.setCartItems(props.cartItems.concat(addArray));
-              //   console.log(props.cartItems);
-              // }}
+                onClick={async () => {
+                  const times = await Cookies.getJSON(
+                    `item${sell.sellId}Amount`,
+                  );
+                  for (let i = 0; i < times; i++) {
+                    const newItem = { ...sell };
+                    clone.push(newItem);
+                    clone.map((cloneItem, index) => {
+                      return (cloneItem.sellId = index);
+                    });
+                  }
+                  props.setCartItems(clone);
+                  await Cookies.set(
+                    'cartItems',
+                    JSON.stringify(props.cartItems.length),
+                  );
+                  // await Cookies.set(
+                  //   `item${sell.sellId}Amount`,
+                  //   JSON.stringify(),
+                  // );
+                  // 2. 0 as Amount should delete the item???
+                }}
               >
-                Fix!!! Add
+                Add Amount
               </button>
               <button
                 onClick={async () => {
@@ -56,9 +80,8 @@ export default function ShoppingCart({ ...props }) {
                   clone.map((cloneItem, index) => {
                     return (cloneItem.sellId = index);
                   });
-                  console.log(clone);
                   props.setCartItems(clone);
-                  await Cookies.set('cartItems', JSON.stringify(clone));
+                  await Cookies.set('cartItems', JSON.stringify(clone.length));
                 }}
               >
                 Delete
@@ -69,6 +92,16 @@ export default function ShoppingCart({ ...props }) {
         <br />
         <br />
         {calcTotal()}
+        <br />
+        <br />
+        <button
+          onClick={async () => {
+            props.setCartItems([]);
+            await Cookies.set('cartItems', JSON.stringify(0));
+          }}
+        >
+          Delete All
+        </button>
         <br />
         <br />
         <Link href="/checkout">

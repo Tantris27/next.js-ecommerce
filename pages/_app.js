@@ -5,7 +5,7 @@ import { useState } from 'react';
 
 function MyApp({ Component, pageProps }) {
   const [cartItems, setCartItems] = useState([]);
-  cookies.set('cartItems', cartItems);
+  cookies.set('cartItems', cartItems.length);
   return (
     <>
       <Global

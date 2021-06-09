@@ -30,10 +30,7 @@ export default function SingleProduct({ setCartItems, cartItems, ...props }) {
           sellprod.sellId = cartItems.length;
           setCartItems([...cartItems, sellprod]);
           sellprod = {};
-          await cookies.set(
-            'cartItems',
-            JSON.stringify([...cartItems, sellprod]),
-          );
+          await cookies.set('cartItems', JSON.stringify(3));
         }}
       >
         Add to Buy
@@ -58,7 +55,6 @@ export default function SingleProduct({ setCartItems, cartItems, ...props }) {
   );
 }
 export async function getServerSideProps(context) {
-  console.log(context);
   const bookId = await context.query.id;
   const { getBookById } = await import('../../util/database');
   const book = await getBookById(bookId);

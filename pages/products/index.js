@@ -19,6 +19,9 @@ const productLinkStyle = css`
   width: 200px;
   height: 200px;
   padding: 20px;
+  :hover {
+    background-color: #bdb7b7;
+  }
 `;
 const linkStyle = css`
   text-decoration: none;
@@ -37,7 +40,7 @@ export default function ProductIndex({ cartItems, setCartItems, ...props }) {
             <Link href={'/products/' + book.id} key={book.id}>
               <a css={linkStyle}>
                 <div css={productLinkStyle}>
-                  <h1>{book.name}</h1>
+                  <h1>{book.title}</h1>
                   <div>product id: {book.id}</div>
                   <div>Genre: {book.genre}</div>
                   <div>product price: {book.price}$</div>
@@ -50,10 +53,8 @@ export default function ProductIndex({ cartItems, setCartItems, ...props }) {
                       sellprod = {};
                       await cookies.set(
                         'cartItems',
-                        JSON.stringify([cartItems.id]),
+                        JSON.stringify([cartItems.length]),
                       );
-                      // await console.log(JSON.stringify([...cartItems]));
-                      // await console.log([...cartItems]);
                     }}
                   >
                     Add to Buy
