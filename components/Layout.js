@@ -18,9 +18,9 @@ export default function Layout({ ...props }) {
     <>
       <Header props={props} />
       <div css={containerStyles}>{props.children}</div>
-      <footer css={footerStyles}>
+      {/* <footer css={footerStyles}>
         <p>@Copyright KantnerCorp.</p>
-      </footer>
+      </footer> */}
     </>
   );
 }

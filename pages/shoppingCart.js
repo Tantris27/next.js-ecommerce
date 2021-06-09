@@ -9,7 +9,7 @@ const itemStyle = css`
   border: solid 1px grey;
   justify-content: space-around;
   align-items: center;
-  max-width: 500px;
+  max-width: 530px;
   max-height: 40px;
   border-radius: 3px;
 `;
@@ -22,7 +22,8 @@ export default function ShoppingCart({ ...props }) {
     for (let i = 0; i < clone.length; i++) {
       total += parseFloat(clone[i].price);
     }
-    return `Total = ${total}$`;
+    const totalPoint2 = total.toFixed(2);
+    return `Total = ${totalPoint2}$`;
   };
   return (
     <Layout>
@@ -65,11 +66,6 @@ export default function ShoppingCart({ ...props }) {
                     'cartItems',
                     JSON.stringify(props.cartItems.length),
                   );
-                  // await Cookies.set(
-                  //   `item${sell.sellId}Amount`,
-                  //   JSON.stringify(),
-                  // );
-                  // 2. 0 as Amount should delete the item???
                 }}
               >
                 Add Amount

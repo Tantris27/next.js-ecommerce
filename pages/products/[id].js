@@ -16,10 +16,10 @@ export default function SingleProduct({ setCartItems, cartItems, ...props }) {
   return (
     <Layout>
       <Head>
-        <title>{props.book.name}</title>
+        <title>{props.book.title}</title>
       </Head>
 
-      <h1>{props.book.name}</h1>
+      <h1>{props.book.title}</h1>
       <div>product id: {props.book.id}</div>
       <div>Genre: {props.book.genre}</div>
       <div>product price: {props.book.price}$</div>
