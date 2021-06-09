@@ -65,6 +65,10 @@ export default function ShoppingCart({ ...props }) {
                     'cartItems',
                     JSON.stringify(props.cartItems.length),
                   );
+                  // await Cookies.set(
+                  //   `item${sell.sellId}Amount`,
+                  //   JSON.stringify(),
+                  // );
                   // 2. 0 as Amount should delete the item???
                 }}
               >
@@ -88,6 +92,16 @@ export default function ShoppingCart({ ...props }) {
         <br />
         <br />
         {calcTotal()}
+        <br />
+        <br />
+        <button
+          onClick={async () => {
+            props.setCartItems([]);
+            await Cookies.set('cartItems', JSON.stringify(0));
+          }}
+        >
+          Delete All
+        </button>
         <br />
         <br />
         <Link href="/checkout">
