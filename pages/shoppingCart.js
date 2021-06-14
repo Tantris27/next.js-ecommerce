@@ -66,6 +66,10 @@ export default function ShoppingCart({ ...props }) {
                     'cartItems',
                     JSON.stringify(props.cartItems.length),
                   );
+                  await Cookies.set(
+                    `item${sell.sellId}Amount`,
+                    JSON.stringify(1),
+                  );
                 }}
               >
                 Add Amount
