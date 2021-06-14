@@ -3,6 +3,13 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Layout from '../components/Layout';
 
+type Book = {
+  id: number;
+  title: string;
+  author: string;
+  imgadress: string;
+};
+
 const imageDivStyle = css`
   display: flex;
   margin: 0 auto;
@@ -59,7 +66,7 @@ export default function Home({ ...props }) {
       </div>
       <div>
         <ul css={previewStyle}>
-          {previewBooks.map((book) => {
+          {previewBooks.map((book: Book) => {
             return (
               <Link href={'/products/' + book.id} key={book.id}>
                 <a css={linkStyle}>
