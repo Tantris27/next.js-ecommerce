@@ -7,6 +7,11 @@ setPostgresDefaultsOnHeroku();
 
 // Access enviromental variables for calling the DB
 dotenvSafe.config();
+
+// declare module globalThis {
+//   // eslint-disable-next-line @typescript-eslint/naming-convention
+//   let __postgresSqlClient: ReturnType<typeof postgres> | undefined;
+// }
 // connect to DB
 function connectOneTimeToDatabase() {
   let sql;
@@ -25,17 +30,24 @@ function connectOneTimeToDatabase() {
 
   return sql;
 }
-
+type Book = {
+  id: number;
+  title: string;
+  author: string;
+  price: string;
+  genre: string;
+  imgadress: string;
+};
 // Connect to PostgreSQL
 const sql = connectOneTimeToDatabase();
 // Get all books from DB for products Page
 export async function getBooks() {
   const books = await sql`SELECT * FROM books`;
-  return books.map((book) => book);
+  return books.map((book: Book) => book);
 }
 
 // Get one book specified by Id from DB for productId Page
-export async function getBookById(id) {
+export async function getBookById(id: number) {
   if (isNaN(id)) return;
   const books = await sql`
     SELECT
