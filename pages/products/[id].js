@@ -88,7 +88,7 @@ export default function SingleProduct({ setCartItems, cartItems, ...props }) {
           />
           <button
             onClick={() => {
-              let array = [];
+              const array = [];
               for (let i = 0; i < count; i++) {
                 array.push(props.book);
               }

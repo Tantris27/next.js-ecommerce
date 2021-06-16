@@ -11,17 +11,18 @@ type Book = {
   price: string;
 };
 
-const imageDivStyle = css`
-  display: flex;
-  margin: 0 auto;
-  justify-content: space-around;
-`;
+// const imageDivStyle = css`
+//   display: flex;
+//   margin: 0 auto;
+//   justify-content: space-around;
+// `;
 const headStyle = css`
   text-align: center;
 `;
 const previewStyle = css`
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 20px;
   margin-top: 25px;
   margin-left: auto;
   margin-right: auto;
@@ -34,7 +35,7 @@ const productLinkStyle = css`
   text-decoration: none;
   justify-content: flex-start;
   border-radius: 2px;
-  width: 250px;
+  width: 300px;
   height: 500px;
   padding: 20px;
   border: solid 1px #d7ebff;
@@ -48,7 +49,10 @@ const linkStyle = css`
   margin-right: 25px;
   width: 400px;
 `;
-
+const imgStyle = css`
+  width: 250px;
+  /* height: 250px; */
+`;
 export default function Home({ ...props }) {
   const previewBooks = props.books.slice(-5);
   return (
@@ -59,12 +63,8 @@ export default function Home({ ...props }) {
       <div>
         <h1 css={headStyle}>Online Bookstore</h1>
       </div>
-      <div css={imageDivStyle}>
-        {/* <img
-          src="https://cdn.vox-cdn.com/thumbor/M5rDWTrF8CLRL6WguJD7Kiq8fUY=/0x313:4368x2600/fit-in/1200x630/cdn.vox-cdn.com/uploads/chorus_asset/file/19883819/shutterstock_117304297.jpg"
-          alt="bookstore hero"
-        /> */}
-      </div>
+      {/* <div css={imageDivStyle}>
+      </div> */}
       <div>
         <ul css={previewStyle}>
           {previewBooks.map((book: Book) => {
@@ -73,7 +73,7 @@ export default function Home({ ...props }) {
                 <a css={linkStyle}>
                   <div css={productLinkStyle}>
                     <h1>{book.title}</h1>
-                    <img src={book.imgadress} alt="Book Cover" />
+                    <img css={imgStyle} src={book.imgadress} alt="Book Cover" />
                     {/* <div>product id: {book.id}</div>
                     <div>Genre: {book.genre}</div>
                     <div>product price: {book.price}$</div> */}
