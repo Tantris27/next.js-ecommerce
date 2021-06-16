@@ -14,8 +14,14 @@ const itemStyle = css`
   border-radius: 3px;
 `;
 
+type CartItems = {
+  price: string;
+  sellId: number;
+  title: string;
+};
+
 export default function ShoppingCart({ ...props }) {
-  const clone = [].concat(props.cartItems);
+  const clone: CartItems[] = [].concat(props.cartItems);
 
   const calcTotal = () => {
     let total = 0;
@@ -37,6 +43,7 @@ export default function ShoppingCart({ ...props }) {
         {clone.map((sell) => {
           return (
             <div key={sell.sellId} css={itemStyle}>
+              {console.log(sell.sellId)}
               <h3>{sell.title}</h3>
               <p>{sell.price}$</p>
               <input
@@ -76,7 +83,7 @@ export default function ShoppingCart({ ...props }) {
               </button>
               <button
                 onClick={async () => {
-                  clone.splice(sell.sellid, 1);
+                  clone.splice(sell.sellId, 1);
                   clone.map((cloneItem, index) => {
                     return (cloneItem.sellId = index);
                   });

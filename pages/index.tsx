@@ -8,6 +8,7 @@ type Book = {
   title: string;
   author: string;
   imgadress: string;
+  price: string;
 };
 
 const imageDivStyle = css`

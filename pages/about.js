@@ -18,11 +18,11 @@ const paraStyle = css`
   width: 350px;
   color: black;
 `;
-const backgroundStyle = css`
-  background-image: url('https://cdn.vox-cdn.com/thumbor/M5rDWTrF8CLRL6WguJD7Kiq8fUY=/0x313:4368x2600/fit-in/1200x630/cdn.vox-cdn.com/uploads/chorus_asset/file/19883819/shutterstock_117304297.jpg');
-  height: 625px;
-  opacity: 0.5;
-`;
+// const backgroundStyle = css`
+//   background-image: url('https://cdn.vox-cdn.com/thumbor/M5rDWTrF8CLRL6WguJD7Kiq8fUY=/0x313:4368x2600/fit-in/1200x630/cdn.vox-cdn.com/uploads/chorus_asset/file/19883819/shutterstock_117304297.jpg');
+//   height: 625px;
+//   opacity: 0.5;
+// `;
 
 export default function About({ ...props }) {
   return (

@@ -31,10 +31,10 @@ const linkStyle = css`
   text-decoration: none;
   justify-self: center;
 `;
-const imageStyle = css`
-  width: 200px;
-  height: 400px;
-`;
+// const imageStyle = css`
+//   width: 200px;
+//   height: 400px;
+// `;
 
 export default function ProductIndex({ cartItems, setCartItems, ...props }) {
   return (
