@@ -19,7 +19,9 @@ export default function Checkout() {
           <br />
           <br />
           <Link href="/thanks">
-            <button>Complete Transaction</button>
+            <a>
+              <button>Complete Transaction</button>
+            </a>
           </Link>
         </form>
       </div>

@@ -74,9 +74,6 @@ export default function Home({ ...props }) {
                   <div css={productLinkStyle}>
                     <h1>{book.title}</h1>
                     <img css={imgStyle} src={book.imgadress} alt="Book Cover" />
-                    {/* <div>product id: {book.id}</div>
-                    <div>Genre: {book.genre}</div>
-                    <div>product price: {book.price}$</div> */}
                   </div>
                 </a>
               </Link>

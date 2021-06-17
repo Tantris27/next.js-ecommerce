@@ -34,8 +34,9 @@ const headerStyles = css`
   a + a {
     margin-left: 20px;
   }
-  > div {
+  a:last-child {
     margin: 0 0 0 auto;
+    text-decoration: none;
   }
 `;
 
@@ -53,16 +54,18 @@ export default function Header() {
         <a css={aStyle}>Products</a>
       </Link>
       <Link href="/shoppingCart">
-        <div css={picDivStyle}>
-          <input
-            css={picStyle}
-            type="image"
-            src="..\shoppingcart.png"
-            alt="shopping cart"
-          />
+        <a>
+          <div css={picDivStyle}>
+            <input
+              css={picStyle}
+              type="image"
+              src="..\shoppingcart.png"
+              alt="shopping cart"
+            />
 
-          {shoppingListData}
-        </div>
+            {shoppingListData}
+          </div>
+        </a>
       </Link>
     </header>
   );
