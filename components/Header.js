@@ -4,17 +4,17 @@ import Link from 'next/link';
 
 const aStyle = css`
   margin-top: 5px;
-  color: white;
+  color: grey;
   cursor: pointer;
   :hover {
-    color: grey;
+    color: white;
   }
 `;
 const picDivStyle = css`
   display: flex;
   width: 50px;
   height: 30px;
-  color: white;
+  color: black;
   justify-content: space-around;
   align-items: center;
 `;
@@ -28,14 +28,15 @@ const picStyle = css`
 const headerStyles = css`
   display: flex;
   padding: 10px 15px;
-  background-color: goldenrod;
+  background-color: #d7ebff;
   margin-bottom: 20px;
-  border-bottom: solid 3px black;
+  border-bottom: solid 1px black;
   a + a {
-    margin-left: 15px;
+    margin-left: 20px;
   }
-  > div {
+  a:last-child {
     margin: 0 0 0 auto;
+    text-decoration: none;
   }
 `;
 
@@ -53,16 +54,18 @@ export default function Header() {
         <a css={aStyle}>Products</a>
       </Link>
       <Link href="/shoppingCart">
-        <div css={picDivStyle}>
-          <input
-            css={picStyle}
-            type="image"
-            src="..\shoppingcart.png"
-            alt="shopping cart"
-          />
+        <a>
+          <div css={picDivStyle}>
+            <input
+              css={picStyle}
+              type="image"
+              src="..\shoppingcart.png"
+              alt="shopping cart"
+            />
 
-          {shoppingListData}
-        </div>
+            {shoppingListData}
+          </div>
+        </a>
       </Link>
     </header>
   );

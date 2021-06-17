@@ -9,20 +9,27 @@ const itemStyle = css`
   border: solid 1px grey;
   justify-content: space-around;
   align-items: center;
-  max-width: 500px;
+  max-width: 530px;
   max-height: 40px;
   border-radius: 3px;
 `;
 
+type CartItems = {
+  price: string;
+  sellId: number;
+  title: string;
+};
+
 export default function ShoppingCart({ ...props }) {
-  const clone = [].concat(props.cartItems);
+  const clone: CartItems[] = [].concat(props.cartItems);
 
   const calcTotal = () => {
     let total = 0;
     for (let i = 0; i < clone.length; i++) {
       total += parseFloat(clone[i].price);
     }
-    return `Total = ${total}$`;
+    const totalPoint2 = total.toFixed(2);
+    return `Total = ${totalPoint2}$`;
   };
   return (
     <Layout>
@@ -36,6 +43,7 @@ export default function ShoppingCart({ ...props }) {
         {clone.map((sell) => {
           return (
             <div key={sell.sellId} css={itemStyle}>
+              {console.log(sell.sellId)}
               <h3>{sell.title}</h3>
               <p>{sell.price}$</p>
               <input
@@ -65,18 +73,17 @@ export default function ShoppingCart({ ...props }) {
                     'cartItems',
                     JSON.stringify(props.cartItems.length),
                   );
-                  // await Cookies.set(
-                  //   `item${sell.sellId}Amount`,
-                  //   JSON.stringify(),
-                  // );
-                  // 2. 0 as Amount should delete the item???
+                  await Cookies.set(
+                    `item${sell.sellId}Amount`,
+                    JSON.stringify(1),
+                  );
                 }}
               >
                 Add Amount
               </button>
               <button
                 onClick={async () => {
-                  clone.splice(sell.sellid, 1);
+                  clone.splice(sell.sellId, 1);
                   clone.map((cloneItem, index) => {
                     return (cloneItem.sellId = index);
                   });
@@ -105,7 +112,9 @@ export default function ShoppingCart({ ...props }) {
         <br />
         <br />
         <Link href="/checkout">
-          <button>Proceed to Payment</button>
+          <a>
+            <button>Proceed to Payment</button>
+          </a>
         </Link>
       </div>
     </Layout>

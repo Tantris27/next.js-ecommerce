@@ -6,33 +6,41 @@ import Layout from '../../components/Layout';
 
 const productGridStyle = css`
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-gap: 15px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 15px 0px;
+  width: 80%;
+  margin: 100px auto 0;
 `;
 const productLinkStyle = css`
   color: black;
   display: flex;
   flex-direction: column;
   text-decoration: none;
-  background-color: grey;
-  border-radius: 5px;
-  width: 200px;
-  height: 200px;
+  /* background-color: #d7ebff; */
+  border-radius: 2px;
+  width: 250px;
+  height: 600px;
   padding: 20px;
+  justify-content: space-between;
   :hover {
-    background-color: #bdb7b7;
+    /* background-color: #bdb7b7; */
+    border: solid 1px #3d8ca3;
   }
 `;
 const linkStyle = css`
   text-decoration: none;
   justify-self: center;
 `;
+// const imageStyle = css`
+//   width: 200px;
+//   height: 400px;
+// `;
 
 export default function ProductIndex({ cartItems, setCartItems, ...props }) {
   return (
     <Layout {...props}>
       <Head>
-        <title>ProductsIndex</title>
+        <title>Products</title>
       </Head>
       <div css={productGridStyle}>
         {props.books.map((book) => {
@@ -41,9 +49,11 @@ export default function ProductIndex({ cartItems, setCartItems, ...props }) {
               <a css={linkStyle}>
                 <div css={productLinkStyle}>
                   <h1>{book.title}</h1>
-                  <div>product id: {book.id}</div>
-                  <div>Genre: {book.genre}</div>
-                  <div>product price: {book.price}$</div>
+                  {/* <div css={imageStyle}> */}
+                  <img src={book.imgadress} alt="Book Cover" />
+                  {/* </div> */}
+                  {/* <div>Genre: {book.genre}</div>
+                  <div>product price: {book.price}$</div> */}
                   <button
                     onClick={async (e) => {
                       e.preventDefault();
