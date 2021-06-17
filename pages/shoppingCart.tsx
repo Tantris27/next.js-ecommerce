@@ -16,7 +16,7 @@ const itemStyle = css`
 
 type CartItems = {
   price: string;
-  sellId: number;
+  sellid: number;
   title: string;
 };
 
@@ -37,21 +37,22 @@ export default function ShoppingCart({ ...props }) {
         <title>Shopping Cart</title>
       </Head>
       <div>
-        <h1>Shopping Cart</h1>
+        <h1 data-cy="shoppingCart-h1">Shopping Cart</h1>
       </div>
       <div>
         {clone.map((sell) => {
           return (
-            <div key={sell.sellId} css={itemStyle}>
-              {console.log(sell.sellId)}
+            <div key={sell.sellid} css={itemStyle}>
+              {console.log(sell)}
               <h3>{sell.title}</h3>
               <p>{sell.price}$</p>
               <input
+                data-cy={`${sell.sellid}-amount-input`}
                 type="number"
                 min="1"
                 onChange={async (e) => {
                   await Cookies.set(
-                    `item${sell.sellId}Amount`,
+                    `item${sell.sellid}Amount`,
                     JSON.stringify(e.currentTarget.value),
                   );
                 }}
@@ -59,13 +60,13 @@ export default function ShoppingCart({ ...props }) {
               <button
                 onClick={async () => {
                   const times = await Cookies.getJSON(
-                    `item${sell.sellId}Amount`,
+                    `item${sell.sellid}Amount`,
                   );
                   for (let i = 0; i < times; i++) {
                     const newItem = { ...sell };
                     clone.push(newItem);
                     clone.map((cloneItem, index) => {
-                      return (cloneItem.sellId = index);
+                      return (cloneItem.sellid = index);
                     });
                   }
                   props.setCartItems(clone);
@@ -74,7 +75,7 @@ export default function ShoppingCart({ ...props }) {
                     JSON.stringify(props.cartItems.length),
                   );
                   await Cookies.set(
-                    `item${sell.sellId}Amount`,
+                    `item${sell.sellid}Amount`,
                     JSON.stringify(1),
                   );
                 }}
@@ -83,9 +84,9 @@ export default function ShoppingCart({ ...props }) {
               </button>
               <button
                 onClick={async () => {
-                  clone.splice(sell.sellId, 1);
+                  clone.splice(sell.sellid, 1);
                   clone.map((cloneItem, index) => {
-                    return (cloneItem.sellId = index);
+                    return (cloneItem.sellid = index);
                   });
                   props.setCartItems(clone);
                   await Cookies.set('cartItems', JSON.stringify(clone.length));

@@ -48,13 +48,17 @@ export default function Header() {
         <a css={aStyle}>Home</a>
       </Link>
       <Link href="/about">
-        <a css={aStyle}>About</a>
+        <a data-cy="header-about-link" css={aStyle}>
+          About
+        </a>
       </Link>
       <Link href="/products">
-        <a css={aStyle}>Products</a>
+        <a data-cy="header-products-link" css={aStyle}>
+          Products
+        </a>
       </Link>
       <Link href="/shoppingCart">
-        <a>
+        <a data-cy="header-shoppingCart-link">
           <div css={picDivStyle}>
             <input
               css={picStyle}
