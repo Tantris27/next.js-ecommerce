@@ -1,4 +1,4 @@
-const setPostgresDefaultsOnHeroku = require('utildatabase.js');
+const setPostgresDefaultsOnHeroku = require('util/database.js');
 
 setPostgresDefaultsOnHeroku();
 
