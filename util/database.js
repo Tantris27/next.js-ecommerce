@@ -30,24 +30,24 @@ function connectOneTimeToDatabase() {
 
   return sql;
 }
-type Book = {
-  id: number;
-  title: string;
-  author: string;
-  price: string;
-  genre: string;
-  imgadress: string;
-};
+// type Book = {
+//   id: number;
+//   title: string;
+//   author: string;
+//   price: string;
+//   genre: string;
+//   imgadress: string;
+// };
 // Connect to PostgreSQL
 const sql = connectOneTimeToDatabase();
 // Get all books from DB for products Page
 export async function getBooks() {
   const books = await sql`SELECT * FROM books`;
-  return books.map((book: Book) => book);
+  return books.map((book) => book);
 }
 
 // Get one book specified by Id from DB for productId Page
-export async function getBookById(id: number) {
+export async function getBookById(id) {
   if (isNaN(id)) return;
   const books = await sql`
     SELECT
