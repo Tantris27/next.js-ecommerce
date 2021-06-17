@@ -2,6 +2,7 @@ module.exports = {
   presets: [
     [
       'next/babel',
+      '@babel/preset-typescript',
       {
         'preset-react': {
           runtime: 'automatic',

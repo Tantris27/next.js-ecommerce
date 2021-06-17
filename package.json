@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "migrate": "dotenv ley",
-    "heroku-postbuild": "yarn migrate up && yarn build"
+    "heroku-postbuild": "yarn migrate up && yarn build",
+    "test": "jest"
   },
   "dependencies": {
     "@emotion/babel-plugin": "^11.3.0",
@@ -23,8 +24,12 @@
     "react-dom": "17.0.2"
   },
   "devDependencies": {
+    "@babel/core": "^7.14.6",
+    "@babel/preset-env": "^7.14.5",
+    "@babel/preset-typescript": "^7.14.5",
     "@next/eslint-plugin-next": "10.2.2",
     "@types/dotenv-safe": "^8.1.1",
+    "@types/jest": "^26.0.23",
     "@types/js-cookie": "^2.2.6",
     "@types/node": "15.0.1",
     "@types/react": "17.0.6",
@@ -33,6 +38,7 @@
     "@typescript-eslint/parser": "4.21.0",
     "@upleveled/eslint-config-upleveled": "1.14.1",
     "babel-eslint": "10.1.0",
+    "babel-jest": "^27.0.2",
     "eslint": "7.23.0",
     "eslint-config-next": "^11.0.0",
     "eslint-config-react-app": "6.0.0",
