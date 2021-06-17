@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import cookies from 'js-cookie';
+// import cookies from 'js-cookie';
 import Head from 'next/head';
 import { useState } from 'react';
 import Layout from '../../components/Layout';
@@ -41,7 +41,7 @@ const imageStyle = css`
 `;
 
 export default function SingleProduct({ setCartItems, cartItems, ...props }) {
-  const [amount, setAmount] = useState();
+  // const [amount, setAmount] = useState();
   const [count, setCount] = useState(1);
 
   if (props.book === null) {

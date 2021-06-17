@@ -112,7 +112,9 @@ export default function ShoppingCart({ ...props }) {
         <br />
         <br />
         <Link href="/checkout">
-          <button>Proceed to Payment</button>
+          <a>
+            <button>Proceed to Payment</button>
+          </a>
         </Link>
       </div>
     </Layout>
