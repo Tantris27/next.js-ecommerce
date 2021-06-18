@@ -64,7 +64,7 @@ const priceDivStyle = css`
 export default function SingleProduct({ cartItems, setCartItems, ...props }) {
   // const [amount, setAmount] = useState();
   const [count, setCount] = useState(1);
-
+  const clone = [].concat(cartItems);
   if (props.book === null) {
     return (
       <Layout>
@@ -137,9 +137,9 @@ export default function SingleProduct({ cartItems, setCartItems, ...props }) {
                 array.push(props.book);
               }
               array.concat(cartItems);
-              console.log(array);
+              // console.log(array);
 
-              setCartItems(array);
+              setCartItems(clone.concat(array));
             }}
           >
             Add to Cart
