@@ -19,22 +19,40 @@ const productLinkStyle = css`
   /* background-color: #d7ebff; */
   border-radius: 2px;
   width: 250px;
-  height: 600px;
+  height: 510px;
   padding: 20px;
-  justify-content: space-between;
+  justify-content: center;
   :hover {
     /* background-color: #bdb7b7; */
     border: solid 1px #3d8ca3;
   }
+  /* a > button {
+
+  } */
 `;
 const linkStyle = css`
   text-decoration: none;
   justify-self: center;
 `;
-// const imageStyle = css`
-//   width: 200px;
-//   height: 400px;
+// const titleStyle = css`
+//   text-decoration: none;
+//   justify-self: center;
+//   margin-top: 45px;
+//   margin-bottom: -15px;
 // `;
+const headerStyle = css`
+  text-align: center;
+  background-color: white;
+  color: black;
+  margin-top: 50px;
+  margin-bottom: -10px;
+`;
+const imageStyle = css`
+  margin-top: 20px;
+  width: 200px;
+  height: 300px;
+  margin-bottom: 25px;
+`;
 
 export default function ProductIndex({ cartItems, setCartItems, ...props }) {
   return (
@@ -42,15 +60,18 @@ export default function ProductIndex({ cartItems, setCartItems, ...props }) {
       <Head>
         <title>Products</title>
       </Head>
+      <h1 data-cy="products-h1" css={headerStyle}>
+        All Products
+      </h1>
       <div css={productGridStyle}>
         {props.books.map((book) => {
           return (
             <Link href={'/products/' + book.id} key={book.id}>
-              <a css={linkStyle}>
+              <a css={linkStyle} data-cy={`product-page-${book.id}`}>
                 <div css={productLinkStyle}>
                   <h1>{book.title}</h1>
                   {/* <div css={imageStyle}> */}
-                  <img src={book.imgadress} alt="Book Cover" />
+                  <img css={imageStyle} src={book.imgadress} alt="Book Cover" />
                   {/* </div> */}
                   {/* <div>Genre: {book.genre}</div>
                   <div>product price: {book.price}$</div> */}
@@ -67,7 +88,7 @@ export default function ProductIndex({ cartItems, setCartItems, ...props }) {
                       );
                     }}
                   >
-                    Add to Buy
+                    Add to Cart
                   </button>
                 </div>
               </a>

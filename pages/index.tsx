@@ -21,8 +21,8 @@ const headStyle = css`
 `;
 const previewStyle = css`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  grid-gap: 5px;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  grid-gap: 10px;
   margin-top: 25px;
   margin-left: auto;
   margin-right: auto;
@@ -37,7 +37,7 @@ const productLinkStyle = css`
   /* justify-content: flex-start; */
   border-radius: 2px;
   width: 250px;
-  height: 500px;
+  height: 400px;
   padding: 20px;
   border: solid 1px #d7ebff;
   :hover {
@@ -53,6 +53,8 @@ const linkStyle = css`
 const imgStyle = css`
   width: 200px;
   height: 300px;
+  align-self: center;
+  justify-self: center;
 `;
 export default function Home({ ...props }) {
   const previewBooks = props.books.slice(-5);
@@ -62,7 +64,7 @@ export default function Home({ ...props }) {
         <title>Home</title>
       </Head>
       <div>
-        <h1 css={headStyle}>Online Bookstore</h1>
+        <h1 css={headStyle}>Real Online Bookstore</h1>
       </div>
       <div css={imageDivStyle} />
       <div>
@@ -72,7 +74,7 @@ export default function Home({ ...props }) {
               <Link href={'/products/' + book.id} key={book.id}>
                 <a css={linkStyle}>
                   <div css={productLinkStyle}>
-                    <h1>{book.title}</h1>
+                    {/* <h1>{book.title}</h1> */}
                     <img css={imgStyle} src={book.imgadress} alt="Book Cover" />
                   </div>
                 </a>

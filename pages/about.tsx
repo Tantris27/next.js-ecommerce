@@ -31,7 +31,9 @@ export default function About({ ...props }) {
         <title>About</title>
       </Head>
       {/* <div css={backgroundStyle}> */}
-      <h1 css={headerStyle}>About Us</h1>
+      <h1 data-cy="about-page-h1" css={headerStyle}>
+        About Us
+      </h1>
       <div css={divStyle}>
         <p css={paraStyle}>
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
