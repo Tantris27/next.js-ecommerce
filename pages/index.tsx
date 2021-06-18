@@ -11,18 +11,18 @@ type Book = {
   price: string;
 };
 
-// const imageDivStyle = css`
-//   display: flex;
-//   margin: 0 auto;
-//   justify-content: space-around;
-// `;
+const imageDivStyle = css`
+  display: flex;
+  margin: 0 auto;
+  justify-content: space-around;
+`;
 const headStyle = css`
   text-align: center;
 `;
 const previewStyle = css`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  grid-gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 5px;
   margin-top: 25px;
   margin-left: auto;
   margin-right: auto;
@@ -33,9 +33,10 @@ const productLinkStyle = css`
   display: flex;
   flex-direction: column;
   text-decoration: none;
-  justify-content: flex-start;
+  justify-content: space-evenly;
+  /* justify-content: flex-start; */
   border-radius: 2px;
-  width: 300px;
+  width: 250px;
   height: 500px;
   padding: 20px;
   border: solid 1px #d7ebff;
@@ -46,12 +47,12 @@ const productLinkStyle = css`
 const linkStyle = css`
   text-decoration: none;
   display: block;
-  margin-right: 25px;
-  width: 400px;
+  /* margin-right: 25px; */
+  width: 300px;
 `;
 const imgStyle = css`
-  width: 250px;
-  /* height: 250px; */
+  width: 200px;
+  height: 300px;
 `;
 export default function Home({ ...props }) {
   const previewBooks = props.books.slice(-5);
@@ -63,8 +64,7 @@ export default function Home({ ...props }) {
       <div>
         <h1 css={headStyle}>Online Bookstore</h1>
       </div>
-      {/* <div css={imageDivStyle}>
-      </div> */}
+      <div css={imageDivStyle} />
       <div>
         <ul css={previewStyle}>
           {previewBooks.map((book: Book) => {
