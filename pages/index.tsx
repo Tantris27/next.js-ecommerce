@@ -11,11 +11,11 @@ type Book = {
   price: string;
 };
 
-// const imageDivStyle = css`
-//   display: flex;
-//   margin: 0 auto;
-//   justify-content: space-around;
-// `;
+const imageDivStyle = css`
+  display: flex;
+  margin: 0 auto;
+  justify-content: space-around;
+`;
 const headStyle = css`
   text-align: center;
 `;
@@ -33,7 +33,8 @@ const productLinkStyle = css`
   display: flex;
   flex-direction: column;
   text-decoration: none;
-  justify-content: flex-start;
+  justify-content: space-evenly;
+  /* justify-content: flex-start; */
   border-radius: 2px;
   width: 250px;
   height: 400px;
@@ -46,8 +47,8 @@ const productLinkStyle = css`
 const linkStyle = css`
   text-decoration: none;
   display: block;
-  margin-right: 25px;
-  width: 400px;
+  /* margin-right: 25px; */
+  width: 300px;
 `;
 const imgStyle = css`
   width: 200px;
@@ -65,8 +66,7 @@ export default function Home({ ...props }) {
       <div>
         <h1 css={headStyle}>Real Online Bookstore</h1>
       </div>
-      {/* <div css={imageDivStyle}>
-      </div> */}
+      <div css={imageDivStyle} />
       <div>
         <ul css={previewStyle}>
           {previewBooks.map((book: Book) => {
