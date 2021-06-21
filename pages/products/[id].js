@@ -95,7 +95,7 @@ export default function SingleProduct({ cartItems, setCartItems, ...props }) {
             <br />
             <br />
             <br />
-            <div>{props.book.author}</div>
+            <div css={priceStyle}>{props.book.author}</div>
             <br />
             <br />
 

@@ -37,7 +37,7 @@ const productLinkStyle = css`
   /* justify-content: flex-start; */
   border-radius: 2px;
   width: 250px;
-  height: 400px;
+  height: 500px;
   padding: 20px;
   border: solid 1px #d7ebff;
   :hover {
@@ -64,7 +64,7 @@ export default function Home({ ...props }) {
         <title>Home</title>
       </Head>
       <div>
-        <h1 css={headStyle}>Real Online Bookstore</h1>
+        <h1 css={headStyle}>Online Bookstore</h1>
       </div>
       <div css={imageDivStyle} />
       <div>
@@ -74,7 +74,7 @@ export default function Home({ ...props }) {
               <Link href={'/products/' + book.id} key={book.id}>
                 <a css={linkStyle}>
                   <div css={productLinkStyle}>
-                    {/* <h1>{book.title}</h1> */}
+                    <h1>{book.title}</h1>
                     <img css={imgStyle} src={book.imgadress} alt="Book Cover" />
                   </div>
                 </a>
